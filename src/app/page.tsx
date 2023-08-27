@@ -19,7 +19,7 @@ export default function Home() {
       {/* <GetPosts /> */}
 
       {articleList.map((el) => (
-        <article className="py-2 px-10 hover:text-violet-500">
+        <article key={el.title} className="py-2 px-10 hover:text-violet-500">
           <div className="bg-gray-200 rounded-lg p-4 border border-blue-400 shadow-lg">
             <Link href="/blog/why_blog">
               <h2 className="flex justify-center font-bold">
