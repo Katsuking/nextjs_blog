@@ -2,14 +2,7 @@ import Footer from "@/components/Footer";
 import GetPosts from "@/components/GetPosts";
 import Header from "@/components/Header/Header";
 import Link from "next/link";
-
-const articleList = [
-  {
-    title: "フロントエンドに触れたい",
-    subtitle: "why blog?",
-    date: "2023/07/01",
-  },
-];
+import articleList from "./article_list.js";
 
 export default function Home() {
   return (
