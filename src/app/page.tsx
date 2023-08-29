@@ -1,5 +1,4 @@
 import Footer from "@/components/Footer";
-import GetPosts from "@/components/GetPosts";
 import Header from "@/components/Header/Header";
 import Link from "next/link";
 import articleList from "./article_list.js";
@@ -14,7 +13,7 @@ export default function Home() {
       {articleList.map((el) => (
         <article key={el.title} className="py-2 px-10 hover:text-violet-500">
           <div className="bg-gray-200 rounded-lg p-4 border border-blue-400 shadow-lg">
-            <Link href="/blog/why_blog">
+            <Link href={el.link}>
               <h2 className="flex justify-center font-bold">
                 {el.title}
               </h2>
