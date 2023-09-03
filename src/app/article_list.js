@@ -13,6 +13,12 @@ const articleList = [
 		subtitle: "Tailwind CSS playground",
 		date: "2023/08/02",
 	},
+	{
+		title: "Landing pageの作成",
+		link: "/blog/landing_page",
+		subtitle: "Nikeのlanding page",
+		date: "2023/09/03",
+	},
 ];
 
 export default articleList;
