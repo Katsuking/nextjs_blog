@@ -37,12 +37,6 @@ const articleList = [
 		subtitle: "Next.js で setIntervalを扱う",
 		date: "2023/07/3",
 	},
-	{
-		title: "フロントエンド 頑張る",
-		link: "/blog/why_blog",
-		subtitle: "why blog?",
-		date: "2023/07/01",
-	},
 ];
 
 export default articleList;
