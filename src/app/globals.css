@@ -54,12 +54,12 @@
   } */
 
   .info-text {
-    @apply font-montserrat text-slate-gray text-lg leading-7;
+    @apply font-montserrat text-lg leading-7 text-slate-gray;
   }
 }
 
 @layer components {
   .card {
-    @apply m-10 rounded-lg bg-white px-6 py-8 shadow-xl ring-1 ring-slate-900/5
+    @apply m-10 rounded-lg bg-white px-6 py-8 shadow-xl ring-1 ring-slate-900/5;
   }
 }
