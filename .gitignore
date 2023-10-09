@@ -35,7 +35,7 @@ yarn-error.log*
 next-env.d.ts
 
 .env*
-db
+db-data
 configdb
 
 # Byte-compiled / optimized / DLL files
@@ -54,7 +54,7 @@ dist/
 downloads/
 eggs/
 .eggs/
-lib/
+!lib/db/prisma.ts
 lib64/
 parts/
 sdist/
