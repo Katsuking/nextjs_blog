@@ -1,34 +1,204 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+### 概要
 
-## Getting Started
+middlewareを使って、全体をprotected routeに設定する
 
-First, run the development server:
+### node upgrade using nvm
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+最新版のインストール
+
+```sh
+nvm install node # "node" is an alias for the latest version
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### nextjs install
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```sh
+npx create-next-app@latest my-app --typescript --tailwind --eslint
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### tailwindcss
 
-## Learn More
+[tailwindcss setup](https://tailwindcss.com/docs/guides/nextjs)
 
-To learn more about Next.js, take a look at the following resources:
+[prettier](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### nextauth
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+```sh
+npm install next-auth
+```
 
-## Deploy on Vercel
+### callback
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+http://localhost:3000/api/auth/callback/google
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### shadcn
+
+[shadcn](https://ui.shadcn.com/docs/installation/next)
+
+![Alt text](./images/shadcn.png)
+
+```sh
+npx shadcn-ui@latest add button
+```
+
+login new-password 等の諸々に CardWrapper を使って統一する
+
+```sh
+npx shadcn-ui@latest add card
+```
+
+フォームの追加
+`react-hook-form`や`zod`などを追加してくれる
+
+```sh
+npx shadcn-ui@latest add form
+npx shadcn-ui@latest add input
+```
+
+dropdown-menu
+
+```sh
+npx shadcn-ui@latest add dropdown-menu
+npx shadcn-ui@latest add avatar
+npx shadcn-ui@latest add badge
+```
+
+```sh
+
+```
+
+### react-icons
+
+Google, Githubなどのアイコンをまとめたパッケージを使う
+
+```sh
+npm i react-icons
+```
+
+### ORM
+
+いつもどおりprismaを使います
+prisma adapterもインストール
+
+```sh
+npm install @prisma/client @next-auth/prisma-adapter@canary
+npm i -D prisma
+```
+
+lib/db.ts
+
+```ts
+import { PrismaClient } from '@prisma/client'
+
+declare global {
+  var prisma: PrismaClient | undefined
+}
+
+export const db = globalThis.prisma || new PrismaClient()
+
+if (process.env.NODE_ENV !== 'production') globalThis.prisma = db
+```
+
+初期化
+
+```sh
+npx prisma init
+```
+
+<details><summary>docker compose</summary>
+
+```yaml
+version: '3'
+
+services:
+  db:
+    image: mysql:latest
+    container_name: mydb
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_USER: myuser
+      MYSQL_PASSWORD: password
+      MYSQL_DATABASE: mydb
+      TZ: 'Asia/Tokyo'
+    ports:
+      - '3006:3306'
+    networks:
+      - my-network
+    volumes:
+      - mysql-nextjs:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    depends_on:
+      - db
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOST=db
+      - PMA_USER=myuser
+      - PMA_PASSWORD=password
+    ports:
+      - '8081:80'
+    restart: always
+    networks:
+      - my-network
+
+volumes:
+  mysql-nextjs:
+
+networks:
+  my-network:
+```
+
+.envに記載する接続文字列
+
+```sh
+DATABASE_URL="mysql://myuser:password@localhost:3006/mydb"
+```
+
+<details>
+
+下記のように設定して、
+
+```prisma
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  is String @id @default(cuid())
+  name String
+}
+```
+
+以上の設定が完了したら下記のコマンドを実行すると、
+lib/db.tsで定義したdbが使えるようになる
+
+```sh
+npx prisma generate
+```
+
+試しに下記のようにlayout.tsxとかで書いてみればきちんと補完が機能するはず
+
+```tsx
+import { db } from "@/lib/db";
+const user = db.user.
+```
+
+次にDBへschema.prismaで定義したものを反映させる
+
+```sh
+npx prisma db push
+```
+
+### auth.config.ts
+
+[Edge compatibility](https://authjs.dev/guides/upgrade-to-v5?authentication-method=middleware#edge-compatibility)
