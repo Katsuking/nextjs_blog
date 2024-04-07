@@ -1,44 +1,27 @@
-import Image from "next/image";
-import Link from "next/link";
-import React from "react";
+import { ModeToggle } from '@/components/Header/darkTheme'
+import { FaReact } from 'react-icons/fa6'
+import NavItems from './NavItems'
 
 const Header = () => {
-	return (
-		<header className="bg-black text-white whitespace-normal m-3 rounded-md sticky">
-			<nav className="container mx-auto flex items-center justify-between py-4">
-				<Image
-					src="/outer_space.png"
-					width={100}
-					height={40}
-					alt="my logo"
-					className="object-contain"
-				/>
-				<Link href="/">
-					<div className="text-2xl font-semibold px-2 hover:text-violet-400 font-mono">
-						My playground/*
-					</div>
-				</Link>
-				<ul className="flex pr-3">
-					<li className="text-lg">
-						<Link
-							href="/"
-							className="flex hover:text-violet-400 transition-colors duration-300 pr-3 font-mono"
-						>
-							Home
-						</Link>
-					</li>
-					<li className="text-lg">
-						<Link
-							href="/About"
-							className="flex hover:text-violet-400 transition-colors duration-300 pr-3 font-mono"
-						>
-							About me
-						</Link>
-					</li>
-				</ul>
-			</nav>
-		</header>
-	);
-};
+  return (
+    <header className="mt-2 sticky top-2 z-50 bg-white dark:bg-[#020817]">
+      <nav className="flex justify-between items-center mx-2 py-4">
+        <div className="flex flex-row space-x-2">
+          <div className="sm:ml-20 items-stretch">
+            <FaReact size={50} />
+          </div>
+          <div className="flex flex-col">
+            <h1>my playground</h1>
+            <p className="md:pl-5">using Next.js</p>
+          </div>
+        </div>
+        <div className="flex flex-row items-center sm:mr-20 space-x-3">
+          <NavItems />
+          <ModeToggle />
+        </div>
+      </nav>
+    </header>
+  )
+}
 
-export default Header;
+export default Header
