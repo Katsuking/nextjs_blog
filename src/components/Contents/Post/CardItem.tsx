@@ -18,7 +18,7 @@ type CardItemProps = {
 const CardItem = ({ title, desc, content, imageUrl }: CardItemProps) => {
   return (
     <div>
-      <Card>
+      <Card className="opacity-80">
         <CardHeader>
           <CardTitle>{title}</CardTitle>
           <CardDescription>{desc}</CardDescription>
@@ -31,7 +31,7 @@ const CardItem = ({ title, desc, content, imageUrl }: CardItemProps) => {
               alt="man_study"
               width={100}
               height={100}
-              className="object-cover"
+              className="object-cover rounded-lg"
             />
           </CardContent>
         </div>
