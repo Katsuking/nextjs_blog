@@ -2,6 +2,7 @@ import { ModeToggle } from '@/components/Header/darkTheme'
 import { FaReact } from 'react-icons/fa6'
 import NavItems from './NavItems'
 import Link from 'next/link'
+import HamberguerMenu from '@/components/Header/HamberguerMenu'
 
 const Header = () => {
   return (
@@ -20,6 +21,7 @@ const Header = () => {
         </Link>
         <div className="flex flex-row items-center sm:mr-20 space-x-3">
           <NavItems />
+          <HamberguerMenu />
           <ModeToggle />
         </div>
       </nav>
