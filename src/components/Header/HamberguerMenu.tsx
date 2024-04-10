@@ -33,7 +33,7 @@ const HamberguerMenu = () => {
           <DropdownMenuGroup>
             <DropdownMenuItem>
               <Link href="https://github.com/Katsuking">
-                <div className="flex flex-row items-center">
+                <div className="flex flex-row items-center p-2">
                   <FaGithub size={20} />
                   <p className="pt-1">Github</p>
                 </div>
@@ -41,7 +41,7 @@ const HamberguerMenu = () => {
             </DropdownMenuItem>
             <DropdownMenuItem>
               <Link href="/whoami">
-                <div className="flex flex-row items-center">
+                <div className="flex flex-row items-center p-2">
                   <FaLinux size={20} />
                   <p className="pt-1">$whoami</p>
                 </div>

@@ -20,9 +20,9 @@ const Intro = () => {
           className="absolute"
         />
         <Link href="/whoami">
-          <div className="flex flex-row items-center absolute top-[170px] left-[20px] bg-[#060e1f] rounded-lg p-2">
+          <div className="flex flex-row items-center absolute top-[170px] left-[20px] bg-white dark:bg-[#060e1f] rounded-lg p-2">
             <IoIosArrowDroprightCircle />
-            <span>MORE ABOUT ME</span>
+            <span className="">MORE ABOUT ME</span>
           </div>
         </Link>
       </div>

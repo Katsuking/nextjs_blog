@@ -5,13 +5,13 @@ import Intro from '@/components/Contents/Intro/Intro'
 const Content = () => {
   return (
     <div className="bg-fixed bg-center bg-cover bg-[url('/images/bg-dark-fixed.jpg')] rounded-lg">
-      <div className="py-20 flex flex-col md:flex-row justify-evenly">
+      <div className="py-10 flex flex-col md:flex-row justify-evenly">
         <div className="mx-5 mt-20 md:min-w-[250px]">
           <Intro />
         </div>
         <div className="m-3 md:w-full">
           <h2 className="text-white font-bold">日々の学習のアウトプット</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 justify-between my-4">
+          <div className="items-stretch grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 justify-between my-4">
             {Posts.map((el) => (
               <CardItem
                 key={el.title}
