@@ -1,7 +1,7 @@
 ---
-title: 'How to use tanstack query'
-excerpt: 'fetchだけの時代は終わった'
-desc: 'よく使うtanstack queryの書き方を整理する'
+title: 'markdownのコードにsyntax highlightをつける'
+excerpt: 'How to add syntax highlight to your markdown blog'
+desc: 'react-markdown, react-syntax-highlighterとは別の方法で実装します。'
 coverImage: '/images/man_study.jpeg'
 date: '2020-03-16T05:35:07.322Z'
 author:
@@ -11,17 +11,127 @@ ogImage:
   url: '/images/man_study.jpeg'
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Praesent elementum facilisis leo vel fringilla est ullamcorper eget. At imperdiet dui accumsan sit amet nulla facilities morbi tempus. Praesent elementum facilisis leo vel fringilla. Congue mauris rhoncus aenean vel. Egestas sed tempus urna et pharetra pharetra massa massa ultricies.
+![guy studin all day](/images/man_study.jpeg)
 
-Venenatis cras sed felis eget velit. Consectetur libero id faucibus nisl tincidunt. Gravida in fermentum et sollicitudin ac orci phasellus egestas tellus. Volutpat consequat mauris nunc congue nisi vitae. Id aliquet risus feugiat in ante metus dictum at tempor. Sed blandit libero volutpat sed cras. Sed odio morbi quis commodo odio aenean sed adipiscing. Velit euismod in pellentesque massa placerat. Mi bibendum neque egestas congue quisque egestas diam in arcu. Nisi lacus sed viverra tellus in. Nibh cras pulvinar mattis nunc sed. Luctus accumsan tortor posuere ac ut consequat semper viverra. Fringilla ut morbi tincidunt augue interdum velit euismod.
+## Syntax Highlight
 
-## Lorem Ipsum
+react 周りだと、react-markdown, react-syntax-highlighter がかなり検索で引っかかります。
 
-```javascript
-// test
-console.log('Hello world')
+今回は別の方法で実現します。
+
+使うパッケージは下記の通り、
+
+```sh
+npm i gray-matter remark remark-rehype rehype-stringify
+npm i rehype-pretty-code shiki
 ```
 
-![test](/images/man_study.jpeg)
+大前提として、[Next.js blog-starter](https://github.com/vercel/next.js/tree/canary/examples/blog-starter)
+を参考に作成しているので、構造は違えどやっていることはほとんど同じです。
 
-Tristique senectus et netus et malesuada fames ac turpis. Ridiculous mus mauris vitae ultricies leo integer malesuada nunc vel. In mollis nunc sed id semper. Egestas tellus rutrum tellus pellentesque. Phasellus vestibulum lorem sed risus ultricies tristique nulla. Quis blandit turpis cursus in hac habitasse platea dictumst quisque. Eros donec ac odio tempor orci dapibus ultrices. Aliquam sem et tortor consequat id porta nibh. Adipiscing elit duis tristique sollicitudin nibh sit amet commodo nulla. Diam vulputate ut pharetra sit amet. Ut tellus elementum sagittis vitae et leo. Arcu non odio euismod lacinia at quis risus sed vulputate.
+```sh
+project_root
+├── README.md
+├── _posts <- ここに.mdファイルを投げ入れていく
+│   └── hello_world.md
+├── components.json
+├── next-env.d.ts
+├── next.config.mjs
+├── node_modules/
+├── package-lock.json
+├── package.json
+├── postcss.config.js
+├── prettier.config.js
+├── public/
+├── src
+│   ├── app
+│   ├── components
+│   ├── lib <- markdown周りの関数はここに書く
+│   └── types
+├── tailwind.config.ts
+└── tsconfig.json
+```
+
+相違点は `markdownToHtml.ts` 下記の部分
+
+このファイルは名前の通り markdown を html に変換しています。
+
+- blog-starter
+
+```ts
+import { remark } from 'remark'
+import html from 'remark-html' // <- ちなみにsyntax highlightをつけるのにこれはいらない
+
+export default async function markdownToHtml(markdown: string) {
+  const result = await remark().use(html).process(markdown)
+  return result.toString()
+}
+```
+
+- 修正箇所
+
+Syntax highlight をつけるためには、下記のように変更します。
+
+```ts
+import rehypePrettyCode from 'rehype-pretty-code'
+import rehypeStringify from 'rehype-stringify'
+import { remark } from 'remark'
+import remarkRehype from 'remark-rehype'
+
+export default async function markdownToHtml(markdown: string) {
+  const result = await remark()
+    .use(remarkRehype)
+    .use(rehypePrettyCode)
+    .use(rehypeStringify)
+    .process(markdown)
+  return result.toString()
+}
+```
+
+ルートディレクトリにある/\_posts 以下の markdown ファイルを
+読みに行ってくれている処理まとめ
+
+```tsx
+import { Post } from '@/types/post'
+import fs from 'fs'
+import matter from 'gray-matter'
+import { join } from 'path'
+
+const postsDirectory = join(process.cwd(), '_posts')
+
+export function getPostSlugs() {
+  return fs.readdirSync(postsDirectory)
+}
+
+export function getPostBySlug(slug: string) {
+  const realSlug = slug.replace(/\.md$/, '')
+  const fullPath = join(postsDirectory, `${realSlug}.md`)
+  const fileContents = fs.readFileSync(fullPath, 'utf8')
+  const { data, content } = matter(fileContents)
+
+  return { ...data, slug: realSlug, content } as Post
+}
+
+export function getAllPosts(): Post[] {
+  const slugs = getPostSlugs()
+  const posts = slugs
+    .map((slug) => getPostBySlug(slug))
+    // sort posts by date in descending order
+    .sort((post1, post2) => (post1.date > post2.date ? -1 : 1))
+  return posts
+}
+
+export const generateStaticParams = async () => {
+  // slugの一覧になるobjを返す
+  const posts = getAllPosts()
+
+  return posts.map((post) => ({
+    slug: post.slug,
+  }))
+}
+```
+
+正直、Github や技術系のブログがたくさんある昨今、
+わざわざ自前でマークダウンに Syntax Highlight をつけるのための実装なんているかと思っています。
+
+ですが、エンジニアがブログを書くならコードがちょこっとかけるくらいにはしとこうくらいで書いてます。

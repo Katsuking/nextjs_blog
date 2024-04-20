@@ -18,5 +18,5 @@
 }
 
 .markdown code {
-  @apply text-[12px];
+  @apply text-[12px] overflow-x-scroll;
 }

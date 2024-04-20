@@ -4,6 +4,7 @@ import { getAllPosts } from '@/lib/markdown'
 
 const Content = () => {
   const posts = getAllPosts()
+  console.log(posts.length)
 
   return (
     <div className="bg-fixed bg-center bg-cover bg-[url('/images/bg-dark-fixed.jpg')] rounded-lg">
