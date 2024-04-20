@@ -10,7 +10,7 @@ type MarkdownPostPageProps = {
   }
 }
 
-export const MarkdownPostPage = async ({ params }: MarkdownPostPageProps) => {
+const MarkdownPostPage = async ({ params }: MarkdownPostPageProps) => {
   const post = getPostBySlug(params.slug)
   if (!post) return notFound()
 
