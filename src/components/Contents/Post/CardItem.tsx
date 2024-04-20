@@ -6,31 +6,25 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
+import { Post } from '@/types/post'
 import Image from 'next/image'
 import Link from 'next/link'
 
-type CardItemProps = {
-  title: string
-  desc: string
-  content: string
-  imageUrl: string
-  url: string
-}
-
-const CardItem = ({ title, desc, content, imageUrl, url }: CardItemProps) => {
+const CardItem = ({ title, slug, coverImage, excerpt, desc }: Post) => {
+  if (typeof slug == 'undefined') return
   return (
     <div>
-      <Link href={`${url}`}>
+      <Link href={`/posts/${slug}`}>
         <Card className="opacity-80 hover:opacity-100">
           <CardHeader>
             <CardTitle>{title}</CardTitle>
-            <CardDescription>{desc}</CardDescription>
+            <CardDescription>{excerpt}</CardDescription>
           </CardHeader>
           <div className="flex flex-row items-center">
             <CardContent className="flex flex-row w-full justify-between">
-              <p>{content}</p>
+              <p>{desc}</p>
               <Image
-                src={imageUrl}
+                src={coverImage}
                 alt="man_study"
                 width={100}
                 height={100}

@@ -2,6 +2,7 @@ import { type Author } from './author'
 
 export type Post = {
   slug: string
+  desc: string
   title: string
   date: string
   coverImage: string
@@ -13,3 +14,11 @@ export type Post = {
   content: string
   preview?: boolean
 }
+
+// export type PostCard = {
+//   slug: string
+//   title: string
+//   coverImage: string
+//   excerpt: string
+//   preview?: boolean
+// }
