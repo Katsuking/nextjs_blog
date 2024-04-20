@@ -11,7 +11,9 @@ npx shadcn-ui@latest add card
 
 parsing や syntax highlight 周り
 
+[syntax highlight](https://biplobsd.me/blogs/view/syntax-highlight-code-in-NextJS-tailwindcss-daisyui.md)
+
 ```sh
-npm i gray-matter remark remark-html
-npm i unified remark-parse remark-rehype rehype-highlight rehype-stringify
+npm i gray-matter remark remark-rehype rehype-stringify
+npm i rehype-pretty-code shiki
 ```

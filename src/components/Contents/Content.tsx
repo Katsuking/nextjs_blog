@@ -11,9 +11,9 @@ const Content = () => {
         <div className="mx-5 mt-20 md:min-w-[250px]">
           <Intro />
         </div>
-        <div className="m-3 md:w-full">
+        <div className="m-3 lg:m-10 md:w-full">
           <h2 className="text-white font-bold">日々の学習のアウトプット</h2>
-          <div className="items-stretch grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 justify-between my-4">
+          <div className="items-stretch grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-3 justify-between my-4">
             {posts.map((el) => (
               <CardItem
                 desc={el.desc}
