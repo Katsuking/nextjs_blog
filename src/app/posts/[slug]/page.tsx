@@ -2,8 +2,13 @@ import { PostBody } from '@/components/markdown/Post-body'
 import { getAllPosts, getPostBySlug } from '@/lib/markdown'
 import markdownToHtml from '@/lib/markdownToHtml'
 import { notFound } from 'next/navigation'
-import { Params } from '@/types/params'
 import { Metadata } from 'next'
+
+type Params = {
+  params: {
+    slug: string
+  }
+}
 
 export default async function MdPage({ params }: Params) {
   const post = getPostBySlug(params.slug)

@@ -1,9 +1,6 @@
-import { Params } from '@/types/params'
 import { Post } from '@/types/post'
 import fs from 'fs'
 import matter from 'gray-matter'
-import { Metadata } from 'next'
-import { notFound } from 'next/navigation'
 import { join } from 'path'
 
 const postsDirectory = join(process.cwd(), '_posts')
@@ -37,15 +34,4 @@ export const generateStaticParams = async () => {
   return posts.map((post) => ({
     slug: post.slug,
   }))
-}
-
-export const generateMetaData = ({ params }: Params): Metadata => {
-  const post = getPostBySlug(params.slug)
-  if (!post) return notFound()
-
-  const title = `${post.title} Next.js`
-
-  return {
-    title,
-  }
 }
