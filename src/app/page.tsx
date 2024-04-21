@@ -10,7 +10,7 @@ export default function Home({ searchParams }: HomeProp) {
   return (
     <main>
       <Content query={query} />
-      <div className="py-[1000px]"></div>
+      <div className="py-[500px]"></div>
     </main>
   )
 }

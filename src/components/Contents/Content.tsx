@@ -28,8 +28,8 @@ const Content = ({ query }: ContentProp) => {
           <h2 className="text-white font-bold">Here comes another devlog...</h2>
           <div
             className={cn(
-              'items-stretch grid grid-cols-1 md:grid-cols-1 gap-3 justify-between my-4',
-              posts.length > 1 && 'lg:grid-cols-2' // 検索結果が一つならgrid-cols-1
+              'items-stretch grid grid-cols-1 md:grid-cols-2 gap-3 justify-between my-4',
+              posts.length > 2 && 'lg:grid-cols-3' // 検索結果が一つならgrid-cols-1
             )}
           >
             {posts.length < 1 && (

@@ -7,8 +7,12 @@ import Header from '@/components/Header/Header'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: '日々の学習のアウトプット',
+  title: 'Here comes another devlog...',
   description: 'Next.js のお勉強',
+  openGraph: {
+    title: 'Kachan tried code',
+    images: '/images/man_study.jpeg',
+  },
 }
 
 export default function RootLayout({
