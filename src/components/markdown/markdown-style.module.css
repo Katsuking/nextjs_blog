@@ -1,12 +1,19 @@
 .markdown {
-  @apply text-lg leading-relaxed;
+  @apply text-sm md:text-[16px] leading-relaxed items-center;
 }
 
 .markdown p,
-.markdown ul,
 .markdown ol,
 .markdown blockquote {
-  @apply my-6;
+  @apply my-5;
+}
+
+.markdown ul {
+  @apply list-disc pl-5;
+}
+
+.markdown a {
+  @apply text-black dark:text-orange-200 underline;
 }
 
 .markdown h2 {
@@ -18,5 +25,9 @@
 }
 
 .markdown code {
-  @apply text-[12px] overflow-x-scroll;
+  @apply text-[12px] lg:text-sm p-3 overflow-x-scroll items-center;
+}
+
+.markdown span {
+  @apply py-0 my-0 h-[19px];
 }

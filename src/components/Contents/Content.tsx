@@ -4,7 +4,6 @@ import { getAllPosts } from '@/lib/markdown'
 
 const Content = () => {
   const posts = getAllPosts()
-  console.log(posts.length)
 
   return (
     <div className="bg-fixed bg-center bg-cover bg-[url('/images/bg-dark-fixed.jpg')] rounded-lg">
@@ -13,7 +12,9 @@ const Content = () => {
           <Intro />
         </div>
         <div className="m-3 lg:m-10 md:w-full">
-          <h2 className="text-white font-bold">日々の学習のアウトプット</h2>
+          <h2 className="text-white font-bold">
+            メモのようなチートシートてきなやつ
+          </h2>
           <div className="items-stretch grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-3 justify-between my-4">
             {posts.map((el) => (
               <CardItem

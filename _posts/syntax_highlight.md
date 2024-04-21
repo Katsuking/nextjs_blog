@@ -1,11 +1,11 @@
 ---
 title: 'markdownのコードにsyntax highlightをつける'
-excerpt: 'How to add syntax highlight to your markdown blog'
+excerpt: 'next.js react'
 desc: 'react-markdown, react-syntax-highlighterとは別の方法で実装します。'
 coverImage: '/images/man_study.jpeg'
 date: '2020-03-16T05:35:07.322Z'
 author:
-  name: Tim Neutkens
+  name: vtakenak
   picture: '/images/man_study.jpeg'
 ogImage:
   url: '/images/man_study.jpeg'
@@ -52,11 +52,11 @@ project_root
 └── tsconfig.json
 ```
 
-相違点は `markdownToHtml.ts` 下記の部分
+相違点は markdownToHtml.ts 下記の部分
 
 このファイルは名前の通り markdown を html に変換しています。
 
-- blog-starter
+- [blog-starter markdownToHtml.ts](https://github.com/vercel/next.js/blob/canary/examples/blog-starter/src/lib/markdownToHtml.ts)
 
 ```ts
 import { remark } from 'remark'
