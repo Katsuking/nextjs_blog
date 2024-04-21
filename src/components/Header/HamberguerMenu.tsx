@@ -34,7 +34,7 @@ const HamberguerMenu = () => {
             <DropdownMenuItem>
               <Link href="https://github.com/Katsuking">
                 <div className="flex flex-row items-center p-2">
-                  <FaGithub size={20} />
+                  <FaGithub size={20} className="mx-1" />
                   <p className="pt-1">Github</p>
                 </div>
               </Link>
@@ -42,7 +42,7 @@ const HamberguerMenu = () => {
             <DropdownMenuItem>
               <Link href="/whoami">
                 <div className="flex flex-row items-center p-2">
-                  <FaLinux size={20} />
+                  <FaLinux size={20} className="mx-1" />
                   <p className="pt-1">$whoami</p>
                 </div>
               </Link>

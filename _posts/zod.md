@@ -1,7 +1,7 @@
 ---
 title: 'よく使う zod と shadcn Formの使い方'
 excerpt: 'zod ts'
-desc: 'だいたいこの使い方してるっているのでメモ'
+desc: 'validationのときはだいたいこう使うよねってのまとめ'
 coverImage: '/images/man_study.jpeg'
 date: '2020-03-16T05:35:07.322Z'
 author:

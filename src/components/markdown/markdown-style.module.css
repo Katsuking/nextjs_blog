@@ -13,7 +13,7 @@
 }
 
 .markdown a {
-  @apply text-black dark:text-orange-200 underline;
+  @apply underline dark:text-orange-200;
 }
 
 .markdown h2 {

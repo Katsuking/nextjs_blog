@@ -27,10 +27,15 @@ export function getAllPosts(): Post[] {
   return posts
 }
 
+export function fetchFilteredPosts(query: string) {
+  const all_posts = getAllPosts()
+  const filteredPost = all_posts.filter((el) => el.content.includes(query))
+  return filteredPost
+}
+
 export const generateStaticParams = async () => {
   // slugの一覧になるobjを返す
   const posts = getAllPosts()
-
   return posts.map((post) => ({
     slug: post.slug,
   }))
