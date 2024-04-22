@@ -21,6 +21,7 @@ const Search = ({ placeholder, className, transparent }: SearchProps) => {
     const params = new URLSearchParams(searchParams)
     if (term) {
       params.set('query', term)
+      params.delete('page') // 新規検索なので、ページ遷移を防ぐ
       replace(`${pathname}?${params.toString()}`) // 実際にURL更新する
     } else {
       params.delete('query', term)

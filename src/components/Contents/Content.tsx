@@ -3,12 +3,14 @@ import Intro from '@/components/Contents/Intro/Intro'
 import { fetchFilteredPosts, getAllPosts } from '@/lib/markdown'
 import Search from '@/components/pagination/Search'
 import { cn } from '@/lib/utils'
+import PaginationBar from '../pagination/pagination'
 
 interface ContentProp {
   query: string
+  page: number
 }
 
-const Content = ({ query }: ContentProp) => {
+const Content = ({ query, page }: ContentProp) => {
   let posts = []
   if (query != '') {
     posts = fetchFilteredPosts(query)
@@ -16,6 +18,13 @@ const Content = ({ query }: ContentProp) => {
     posts = getAllPosts()
     // console.log(posts.length)
   }
+
+  const itemsOnPage = 4 // 1ページに表示するアイテムの数
+  const totalPages = Math.ceil(posts.length / itemsOnPage)
+  // ここは本来fetchがやるロジックで全部取ってきて、配列を分割するなんてやらない
+  // itemsOnPageの数だけ移動するスライスで代替
+  const slicedPost = posts.slice((page - 1) * itemsOnPage, page * itemsOnPage)
+  // console.log(slicedPost.length)
 
   return (
     <div className="bg-fixed bg-center bg-cover bg-[url('/images/bg-dark-fixed.jpg')] rounded-lg">
@@ -28,8 +37,8 @@ const Content = ({ query }: ContentProp) => {
           <h2 className="text-white font-bold">Here comes another devlog...</h2>
           <div
             className={cn(
-              'items-stretch grid grid-cols-1 md:grid-cols-2 gap-3 justify-between my-4',
-              posts.length > 2 && 'lg:grid-cols-3' // 検索結果が一つならgrid-cols-1
+              'items-stretch grid grid-cols-1  gap-3 justify-between my-4',
+              (posts.length + 1) % itemsOnPage == 1 && 'lg:grid-cols-2' // 検索結果が一つならgrid-cols-1
             )}
           >
             {posts.length < 1 && (
@@ -38,7 +47,7 @@ const Content = ({ query }: ContentProp) => {
                 検索し直してください。
               </div>
             )}
-            {posts.map((el) => (
+            {slicedPost.map((el) => (
               <CardItem
                 desc={el.desc}
                 slug={el.slug}
@@ -53,6 +62,11 @@ const Content = ({ query }: ContentProp) => {
               />
             ))}
           </div>
+          <PaginationBar
+            currentPage={page}
+            totalPages={totalPages}
+            query={query}
+          />
         </div>
       </div>
       <p className="text-[40px] text-white text-end mr-5 mb-4 italic invisible md:visible">
