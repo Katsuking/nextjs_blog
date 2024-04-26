@@ -8,7 +8,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Here comes another devlog...',
-  description: 'Next.js のお勉強',
+  description: '車輪の大開発',
   openGraph: {
     title: 'Kachan tried code',
     images: '/images/man_study.jpeg',

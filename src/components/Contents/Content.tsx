@@ -34,11 +34,18 @@ const Content = ({ query, page }: ContentProp) => {
         </div>
         <div className="m-3 lg:m-10 md:w-full">
           <Search placeholder="search..." transparent={true} className="w-50" />
-          <h2 className="text-white font-bold">Here comes another devlog...</h2>
+          <div className="flex flex-col">
+            <h2 className="text-white font-bold">
+              Here comes another devlog...
+            </h2>
+            <div>
+              <p>環境: ubuntu</p>
+            </div>
+          </div>
           <div
             className={cn(
-              'items-stretch grid grid-cols-1  gap-3 justify-between my-4',
-              (posts.length + 1) % itemsOnPage == 1 && 'lg:grid-cols-2' // 検索結果が一つならgrid-cols-1
+              'items-stretch grid grid-cols-1 gap-3 justify-between my-4',
+              posts.length > 1 && 'lg:grid-cols-2' // 検索結果が一つならgrid-cols-1
             )}
           >
             {posts.length < 1 && (

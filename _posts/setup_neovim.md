@@ -81,6 +81,10 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.4/install.sh | bash
 nvm install node
 ```
 
+### init.lua
+
+私が使ってる[設定ファイル](https://github.com/Katsuking/vim)
+
 ### おまけ
 
 fzf(fuzzy finder)と組み合わせるとさらに強力なので
