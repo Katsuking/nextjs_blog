@@ -19,12 +19,13 @@ const Search = ({ placeholder, className, transparent }: SearchProps) => {
 
   const handleSearch = useDebouncedCallback((term: string) => {
     const params = new URLSearchParams(searchParams)
-    if (term) {
-      params.set('query', term)
+    const lowerCaseTerm = term.toLowerCase()
+    if (lowerCaseTerm) {
+      params.set('query', lowerCaseTerm)
       params.delete('page') // 新規検索なので、ページ遷移を防ぐ
       replace(`${pathname}?${params.toString()}`) // 実際にURL更新する
     } else {
-      params.delete('query', term)
+      params.delete('query', lowerCaseTerm)
       replace(`${pathname}`)
     }
   }, 300)

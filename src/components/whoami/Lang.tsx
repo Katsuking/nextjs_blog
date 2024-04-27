@@ -9,12 +9,21 @@ const Lang = () => {
       <div className="block md:hidden m-3">
         <h2 className="my-2">Languages I Love</h2>
         <div className="flex flex-row justify-between mx-10">
-          <FaRust size={50} />
-          <BiLogoTypescript size={50} />
-          <FaPython size={50} />
+          <div className="flex flex-col justify-center items-center">
+            <FaRust size={50} />
+            <p>Rust</p>
+          </div>
+          <div className="flex flex-col justify-center items-center">
+            <BiLogoTypescript size={50} />
+            <p>Typescript</p>
+          </div>
+          <div className="flex flex-col justify-center items-center">
+            <FaPython size={50} />
+            <p>Python</p>
+          </div>
         </div>
       </div>
-      <div className="hidden md:block">
+      <div className="hidden md:block ml-5">
         <h2 className="text-[60px]">Languages I love</h2>
         <div className="grid grid-cols-3">
           <TwoItems className="m-2 justify-center">

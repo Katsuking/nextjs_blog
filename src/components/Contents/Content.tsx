@@ -27,7 +27,7 @@ const Content = ({ query, page }: ContentProp) => {
   // console.log(slicedPost.length)
 
   return (
-    <div className="bg-fixed bg-center bg-cover bg-[url('/images/bg-dark-fixed.jpg')] rounded-lg">
+    <div className="rounded-lg">
       <div className="pt-3 pb-5 flex flex-col md:flex-row justify-evenly">
         <div className="mx-5 mt-10 md:min-w-[250px]">
           <Intro />
@@ -35,9 +35,7 @@ const Content = ({ query, page }: ContentProp) => {
         <div className="m-3 lg:m-10 md:w-full">
           <Search placeholder="search..." transparent={true} className="w-50" />
           <div className="flex flex-col">
-            <h2 className="text-white font-bold">
-              Here comes another devlog...
-            </h2>
+            <h2 className="font-bold">Here comes another devlog...</h2>
             <div>
               <p>環境: ubuntu</p>
             </div>

@@ -1,15 +1,45 @@
+'use client'
+
 import Image from 'next/image'
+import { useState } from 'react'
 
 const AboutMe = () => {
+  const [isHovered, setIsHovered] = useState(false)
+
   return (
-    <div className="relative">
-      <Image
-        src="/images/whoami.jpg"
-        alt="intro-img"
-        width={300}
-        height={300}
-        className="absolute"
-      />
+    <div className="mb-10">
+      <div className="flex flex-row container justify-between items-start">
+        <div className="flex justify-center w-full sm:w-1/2">
+          <div className="rounded-lg bg-orange-300 my-5 mx-8 max-w-[600px]">
+            <Image
+              src={isHovered ? '/images/real_me.jpg' : '/images/whoami.jpg'}
+              alt="intro-img"
+              width={600}
+              height={600}
+              className="rounded-lg transform translate-x-4 translate-y-4"
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
+            />
+          </div>
+        </div>
+        <div className="hidden sm:flex flex-col justify-start items-start w-1/2 mt-10 ml-10 h-full">
+          <h1 className="text-[50px] font-bold">$ whoami</h1>
+          <p className="flex-grow text-[14px] md:text-[20px] mx-5 my-3 ">
+            趣味: 車輪の大開発。
+            <br />
+            最近は blazingly fast! な実行速度に魅了され、 <br />
+            Rustを勉強中
+            <br />
+          </p>
+        </div>
+      </div>
+      <div className="sm:hidden flex flex-col mx-5 my-4">
+        <h1 className="font-bold text-[20px]">$ whoami</h1>
+        <p className="text-start ml-10">
+          最近は、blazingly fast! <br />
+          な実行速度に魅了されて、Rustを勉強中
+        </p>
+      </div>
     </div>
   )
 }

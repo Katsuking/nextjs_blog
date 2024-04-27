@@ -215,4 +215,74 @@ fn read_lines<P: AsRef<Path>>(filepath: P) -> Result<io::Lines<BufReader<File>>,
     }
 ```
 
+### Day 3: テスト
+
+下記の設定を Cargo.toml に追加
+
+```toml
+[dev-dependencies]
+assert_cmd = "2.0.14"
+predicates = "3.1.0"
+```
+
+テストしやすいように一行一行出力する処理を関数に切り取ります
+
+```rust
+// さまざまな種類の出力先を受け取ること
+fn find_matches<W: Write>(
+    lines: Lines<BufReader<File>>,
+    pattern: &str,
+    handle: &mut W,
+) -> Result<(), Box<dyn Error>> {
+    for line in lines {
+        if let Ok(line) = line {
+            if line.contains(pattern) {
+                writeln!(handle, "{}", line)?;
+            }
+        }
+    }
+    Ok(())
+}
+```
+
+main の中もスッキリ
+
+```rust
+find_matches(lines, &args.pattern, &mut handle)?;
+//     for line in lines {
+//     if let Ok(line) = line {
+//         if line.contains(&args.pattern) {
+//             writeln!(handle, "{}", line)?;
+//         }
+//     }
+// }
+Ok(())
+```
+
+準備が整ったので、実際にテストコードを書いていきます。
+
+```rust
+
+#[test]
+fn find_a_match() {
+    let file = File::open("./README.md").unwrap(); // README.mdをテストに読み取る
+    let lines = BufReader::new(file).lines();
+    let mut result = Vec::new(); // Write には、空のVector を渡す
+    find_matches(lines, "build", &mut result).unwrap();
+    //  b prefix makes this a byte string literal so its type is going to be &[u8]
+    assert_eq!(result, b"cargo build\n"); // stdout expects bytes (not strings)
+}
+
+#[test]
+fn file_not_found() -> Result<(), Box<dyn Error>> {
+    let mut cmd = Command::cargo_bin("day1")?;
+    // 存在しないファイルのパスを渡す
+    cmd.arg("everyone").arg("/file/does/not/exists");
+    cmd.assert()
+        .failure()
+        .stderr(predicate::str::contains("File not found")); // 期待されるエラーの中身確認
+    Ok(())
+}
+```
+
 以上
