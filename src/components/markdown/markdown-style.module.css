@@ -1,5 +1,5 @@
 .markdown {
-  @apply text-sm md:text-[16px] leading-relaxed items-center;
+  @apply text-sm md:text-[16px] leading-relaxed items-center px-2 py-1 sm:p-8 bg-white rounded-lg;
 }
 
 .markdown p,

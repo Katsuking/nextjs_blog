@@ -1,3 +1,4 @@
+import { cn } from '@/lib/utils'
 import markdownStyles from './markdown-style.module.css'
 
 type Props = {
@@ -6,10 +7,10 @@ type Props = {
 
 export function PostBody({ content }: Props) {
   return (
-    <div className="container mx-auto px-5">
+    <div className="container mx-auto px-3 mt-2">
       <div className="max-w-2xl mx-auto">
         <div
-          className={markdownStyles['markdown']}
+          className={cn('dark:bg-black', markdownStyles['markdown'])}
           dangerouslySetInnerHTML={{ __html: content }}
         />
       </div>

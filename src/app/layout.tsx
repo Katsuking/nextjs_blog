@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import './globals.css'
+import '@/app/globals.css'
 import { ThemeProvider } from '@/components/theme-provider'
 import Header from '@/components/Header/Header'
 import { cn } from '@/lib/utils'
@@ -25,19 +25,21 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={cn(
-          "bg-fixed bg-center bg-cover bg-[url('/images/sea.jpg')] dark:bg-[url('/images/bg-dark-fixed.jpg')]",
+          "bg-fixed bg-center bg-cover bg-[url('/images/sea.jpg')] dark:bg-[url('/images/bg-dark-fixed.jpg')] ",
           inter.className
         )}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <Header />
-          {children}
-        </ThemeProvider>
+        <div className="">
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <Header />
+            {children}
+          </ThemeProvider>
+        </div>
       </body>
     </html>
   )
