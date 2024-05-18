@@ -24,11 +24,16 @@ const AboutMe = () => {
         </div>
         <div className="hidden sm:flex flex-col justify-start items-start w-1/2 mt-10 ml-10 h-full">
           <h1 className="text-[50px] font-bold">$ whoami</h1>
-          <p className="flex-grow text-[14px] md:text-[20px] mx-5 my-3 ">
-            趣味: 車輪の大開発。
+          <p className="flex-grow text-[14px] md:text-[20px] mx-5 my-6 h-full space-y-3">
+            <span>趣味: 筋トレ, 海外旅行(円高のとき), 車輪の大開発</span>
             <br />
-            最近は blazingly fast! な実行速度に魅了され、 <br />
-            Rustを勉強中
+            <span>最近は blazingly fast! な実行速度と安全性に魅了され、</span>
+            <br />
+            <span>Rustを勉強中</span>
+            <br />
+            <span> TSは趣味と仕事の間に位置しますが</span>
+            <br />
+            <span>Rustは完全に趣味の世界。</span>
             <br />
           </p>
         </div>
@@ -38,6 +43,8 @@ const AboutMe = () => {
         <p className="text-start ml-10">
           最近は、blazingly fast! <br />
           な実行速度に魅了されて、Rustを勉強中
+          <br />
+          rustはじっくり煮込んでいきます。
         </p>
       </div>
     </div>
