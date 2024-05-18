@@ -11,15 +11,15 @@ const Lang = () => {
         <div className="flex flex-row justify-between mx-10">
           <div className="flex flex-col justify-center items-center">
             <FaRust size={50} />
-            <p>Rust</p>
+            <span>Rust</span>
           </div>
           <div className="flex flex-col justify-center items-center">
             <BiLogoTypescript size={50} />
-            <p>Typescript</p>
+            <span>Typescript</span>
           </div>
           <div className="flex flex-col justify-center items-center">
             <FaPython size={50} />
-            <p>Python</p>
+            <span>Python</span>
           </div>
         </div>
       </div>
@@ -28,15 +28,15 @@ const Lang = () => {
         <div className="grid grid-cols-3">
           <TwoItems className="m-2 justify-center">
             <FaRust size={50} className="mx-2" />
-            <p className="text-[50px]">Rust</p>
+            <span className="text-[50px]">Rust</span>
           </TwoItems>
           <TwoItems className="m-2 justify-center">
             <BiLogoTypescript size={50} className="mx-2" />
-            <p className="text-[50px]">TypeScript</p>
+            <span className="text-[50px]">TypeScript</span>
           </TwoItems>
           <TwoItems className="m-2 justify-center">
             <FaPython size={50} className="mx-2" />
-            <p className="text-[50px]">Python</p>
+            <span className="text-[50px]">Python</span>
           </TwoItems>
         </div>
       </div>

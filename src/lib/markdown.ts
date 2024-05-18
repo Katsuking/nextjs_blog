@@ -5,7 +5,7 @@ import { join } from 'path'
 
 const postsDirectory = join(process.cwd(), '_posts')
 
-export function getPostSlugs() {
+export async function getPostSlugs() {
   return fs.readdirSync(postsDirectory)
 }
 
@@ -18,8 +18,8 @@ export function getPostBySlug(slug: string) {
   return { ...data, slug: realSlug, content } as Post
 }
 
-export function getAllPosts(): Post[] {
-  const slugs = getPostSlugs()
+export async function getAllPosts(): Promise<Post[]> {
+  const slugs = await getPostSlugs()
   const posts = slugs
     .map((slug) => getPostBySlug(slug))
     // sort posts by date in descending order
@@ -27,15 +27,15 @@ export function getAllPosts(): Post[] {
   return posts
 }
 
-export function fetchFilteredPosts(query: string) {
-  const all_posts = getAllPosts()
+export async function fetchFilteredPosts(query: string) {
+  const all_posts = await getAllPosts()
   const filteredPost = all_posts.filter((el) => el.content.includes(query))
   return filteredPost
 }
 
 export const generateStaticParams = async () => {
   // slugの一覧になるobjを返す
-  const posts = getAllPosts()
+  const posts = await getAllPosts()
   return posts.map((post) => ({
     slug: post.slug,
   }))

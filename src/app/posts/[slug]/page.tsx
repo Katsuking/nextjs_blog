@@ -1,5 +1,5 @@
 import { PostBody } from '@/components/markdown/Post-body'
-import { getAllPosts, getPostBySlug } from '@/lib/markdown'
+import { getPostBySlug } from '@/lib/markdown'
 import markdownToHtml from '@/lib/markdownToHtml'
 import { notFound } from 'next/navigation'
 import { Metadata } from 'next'

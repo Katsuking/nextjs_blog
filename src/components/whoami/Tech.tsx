@@ -1,7 +1,7 @@
 import TwoItems from '@/components/whoami/TwoItems'
 import { TbBrandDocker } from 'react-icons/tb'
-import { SiMysql } from 'react-icons/si'
 import { SiNginx } from 'react-icons/si'
+import { SiAppwrite } from 'react-icons/si'
 
 const Tech = () => {
   return (
@@ -11,15 +11,15 @@ const Tech = () => {
         <div className="flex flex-row justify-between mx-10">
           <div className="flex flex-col">
             <TbBrandDocker size={50} />
-            <p>Docker</p>
+            <span>Docker</span>
           </div>
           <div className="flex flex-col">
-            <SiMysql size={50} />
-            <p>MySQL</p>
+            <SiAppwrite size={50} />
+            <span>Appwrite</span>
           </div>
           <div className="flex flex-col">
             <SiNginx size={50} />
-            <p>Nginx</p>
+            <span>Nginx</span>
           </div>
         </div>
       </div>
@@ -28,15 +28,15 @@ const Tech = () => {
         <div className="grid grid-cols-3">
           <TwoItems className="m-2 justify-center">
             <TbBrandDocker size={50} className="mx-2" />
-            <p className="text-[50px]">Docker</p>
+            <span className="text-[50px]">Docker</span>
           </TwoItems>
           <TwoItems className="m-2 justify-center">
-            <SiMysql size={50} className="mx-2" />
-            <p className="text-[50px]">MySQL</p>
+            <SiAppwrite size={50} className="mx-2" />
+            <span className="text-[50px]">Appwrite</span>
           </TwoItems>
           <TwoItems className="m-2 justify-center">
             <SiNginx size={50} className="mx-2" />
-            <p className="text-[50px]">Nginx</p>
+            <span className="text-[50px]">Nginx</span>
           </TwoItems>
         </div>
       </div>

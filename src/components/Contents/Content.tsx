@@ -4,18 +4,14 @@ import { fetchFilteredPosts, getAllPosts } from '@/lib/markdown'
 import Search from '@/components/pagination/Search'
 import { cn } from '@/lib/utils'
 import PaginationBar from '../pagination/pagination'
+import { ContentProp } from '@/types/types'
 
-interface ContentProp {
-  query: string
-  page: number
-}
-
-const Content = ({ query, page }: ContentProp) => {
+const Content = async ({ query, page }: ContentProp) => {
   let posts = []
   if (query != '') {
-    posts = fetchFilteredPosts(query)
+    posts = await fetchFilteredPosts(query)
   } else {
-    posts = getAllPosts()
+    posts = await getAllPosts()
     // console.log(posts.length)
   }
 
@@ -54,9 +50,9 @@ const Content = ({ query, page }: ContentProp) => {
             )}
             {slicedPost.map((el) => (
               <CardItem
+                key={el.title}
                 desc={el.desc}
                 slug={el.slug}
-                key={el.title}
                 title={el.title}
                 excerpt={el.excerpt}
                 coverImage={el.coverImage}
