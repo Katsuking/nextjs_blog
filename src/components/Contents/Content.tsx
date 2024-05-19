@@ -31,7 +31,7 @@ const Content = async ({ query, page }: ContentProp) => {
         <div className="m-3 lg:m-10 md:w-full">
           <Search placeholder="search..." transparent={true} className="w-50" />
           <div className="flex flex-col">
-            <h2 className="font-bold">Here comes another devlog...</h2>
+            <h2 className="font-bold">Devlog</h2>
             <div>
               <p>環境: ubuntu</p>
             </div>

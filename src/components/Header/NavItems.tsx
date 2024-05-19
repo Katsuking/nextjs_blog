@@ -1,11 +1,18 @@
 import { FaGithub } from 'react-icons/fa'
 import { FaLinux } from 'react-icons/fa'
 import Link from 'next/link'
+import { TbBrandFunimation } from 'react-icons/tb'
 
 const NavItems = () => {
   return (
     <div className="hidden sm:block">
       <div className="flex flex-col md:flex-row space-y-1 md:space-y-0 md:space-x-5 items-center">
+        <Link href="/blog">
+          <div className="flex flex-row items-center">
+            <TbBrandFunimation size={20} className="mx-1" />
+            <p className="pt-1">MyBlog</p>
+          </div>
+        </Link>
         <Link href="https://github.com/Katsuking">
           <div className="flex flex-row items-center">
             <FaGithub size={20} className="mx-1" />

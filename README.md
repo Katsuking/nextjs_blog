@@ -17,3 +17,20 @@ parsing や syntax highlight 周り
 npm i gray-matter remark remark-rehype rehype-stringify
 npm i rehype-pretty-code shiki
 ```
+
+### aceterny ui
+
+ちょっとモダンに仕上げたい
+
+```sh
+npm i framer-motion clsx tailwind-merge mini-svg-data-uri
+npm i tailwindcss-animate framer-motion
+```
+
+### next-themes
+
+[shadcn next-themes](https://ui.shadcn.com/docs/dark-mode/next)
+
+### css gradient
+
+[CSS Gradient](https://cssgradient.io/)

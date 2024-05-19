@@ -9,7 +9,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Here comes another devlog...',
-  description: '車輪の大開発',
+  description: 'Next.js でblogを作ってみる',
   openGraph: {
     title: 'Kachan tried code',
     images: '/images/man_study.jpeg',
@@ -32,7 +32,7 @@ export default function RootLayout({
         <div className="">
           <ThemeProvider
             attribute="class"
-            defaultTheme="system"
+            defaultTheme="dark"
             enableSystem
             disableTransitionOnChange
           >

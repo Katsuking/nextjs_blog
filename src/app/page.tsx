@@ -1,21 +1,9 @@
-import Content from '@/components/Contents/Content'
+import TopContent from '@/components/TopContent/TopContent'
 
-interface HomeProp {
-  searchParams?: {
-    query?: string
-    page?: string
-  }
-}
-
-export default function Home({ searchParams }: HomeProp) {
-  const query = searchParams?.query || ''
-  let currentPage = 1
-  if (searchParams?.page != undefined)
-    currentPage = parseInt(searchParams?.page)
-
+export default function Home() {
   return (
     <main>
-      <Content query={query} page={currentPage} />
+      <TopContent />
       {/* <div className="py-[500px]"></div> */}
     </main>
   )

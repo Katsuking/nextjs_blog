@@ -17,6 +17,7 @@ import {
 import { FaGithub } from 'react-icons/fa'
 import { FaLinux } from 'react-icons/fa'
 import Link from 'next/link'
+import { TbBrandFunimation } from 'react-icons/tb'
 
 const HamberguerMenu = () => {
   return (
@@ -31,6 +32,14 @@ const HamberguerMenu = () => {
           <DropdownMenuLabel>Explorer</DropdownMenuLabel>
           <DropdownMenuSeparator />
           <DropdownMenuGroup>
+            <DropdownMenuItem>
+              <Link href="/blog">
+                <div className="flex flex-row items-center p-2">
+                  <TbBrandFunimation size={20} className="mx-1" />
+                  <p className="pt-1">MyBlog</p>
+                </div>
+              </Link>
+            </DropdownMenuItem>
             <DropdownMenuItem>
               <Link href="https://github.com/Katsuking">
                 <div className="flex flex-row items-center p-2">

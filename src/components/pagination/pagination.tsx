@@ -60,7 +60,7 @@ export default function PaginationBar({
           <PaginationItem className="join-item btn pointer-events-none">
             <PaginationLink href="">{currentPage}</PaginationLink>
           </PaginationItem>
-          {/* 次がないときは表示させない */}
+          {/* 次のページがないときは表示させない */}
           {currentPage < totalPages && (
             <PaginationItem className="join-item btn">
               <PaginationNext
