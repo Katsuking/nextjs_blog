@@ -3,7 +3,7 @@ import { BentoGrid, BentoGridItem } from './BentoGrid'
 
 const Grid = () => {
   return (
-    <section className="w-full p-5 hidden md:block" id="about">
+    <section className="w-full p-5" id="about">
       <BentoGrid>
         {gridItems.map((el) => (
           <BentoGridItem

@@ -1,4 +1,9 @@
+'use client'
+
 import { cn } from '@/lib/utils'
+import { BackgroundGradientAnimation } from './background-gradient-animation'
+import { AuroraBackground } from './aurora-background'
+import { motion } from 'framer-motion'
 
 export const BentoGrid = ({
   className,
@@ -46,7 +51,7 @@ export const BentoGridItem = ({
   return (
     <div
       className={cn(
-        'row-span-1 relative overflow-hidden rounded-3xl border border-white/[0.1] group/bento hover:shadow-xl transition duration-200 shadow-input dark:shadow-none justify-between flex flex-col space-y-4 h-full',
+        'row-span-1 relative overflow-hidden rounded-3xl border border-white/[0.1] group/bento hover:shadow-xl transition duration-200 shadow-input dark:shadow-none justify-between flex flex-col space-y-4 h-full ',
         // 'row-span-1 rounded-xl group/bento hover:shadow-xl transition duration-200 shadow-input dark:shadow-none p-4 dark:bg-black dark:border-white/[0.2] bg-white border border-transparent justify-between flex flex-col space-y-4',
         className
       )}
@@ -79,16 +84,47 @@ export const BentoGridItem = ({
             />
           )}
         </div>
-      </div>
-      {header}
-      <div className="group-hover/bento:translate-x-2 transition duration-200">
-        {icon}
-        <div className="font-sans font-bold text-neutral-600 dark:text-neutral-200 mb-2 mt-2">
-          {title}
+        {id === 6 && (
+          <BackgroundGradientAnimation>
+            <div className="absolute z-50 flex items-center justify-center text-white font-bold" />
+          </BackgroundGradientAnimation>
+        )}
+        <div
+          className={cn(
+            titleClassName,
+            'group-hover/bento:translate-x-2 transition duration-200 relative md:h-full min-h-40 flex flex-col px-5 p-5 lg:p-10'
+          )}
+        >
+          <div className="font-sans font-extralight text-red-50 md:text-xs lg:text-base dark:text-red-50">
+            {description}
+          </div>
+          <div className="font-sans font-bold text-lg lg:text-3xl max-w-96 z-10">
+            {title}
+          </div>
         </div>
-        <div className="font-sans font-normal text-neutral-600 text-xs dark:text-neutral-300">
-          {description}
-        </div>
+        {id === 2 && (
+          <div className="max-h-[30px]">
+            <AuroraBackground>
+              <motion.div
+                initial={{ opacity: 0.0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{
+                  delay: 0.3,
+                  duration: 0.8,
+                  ease: 'easeInOut',
+                }}
+                className="relative flex flex-col gap-4 items-center justify-center px-4 h-full"
+              >
+                <div className="text-3xl md:text-7xl font-bold dark:text-white text-center">
+                  {title}
+                </div>
+                <div className="font-extralight text-base md:text-4xl dark:text-neutral-200 py-4">
+                  {description}
+                </div>
+              </motion.div>
+            </AuroraBackground>
+          </div>
+        )}
       </div>
     </div>
   )

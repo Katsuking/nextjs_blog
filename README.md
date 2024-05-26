@@ -22,9 +22,19 @@ npm i rehype-pretty-code shiki
 
 ちょっとモダンに仕上げたい
 
+[aceterny](https://ui.aceternity.com/)
+
 ```sh
 npm i framer-motion clsx tailwind-merge mini-svg-data-uri
 npm i tailwindcss-animate framer-motion
+```
+
+操作可能な地球を加える
+
+[GitHub Globe](https://ui.aceternity.com/components/github-globe)
+
+```sh
+npm i three three-globe @react-three/fiber @react-three/drei
 ```
 
 ### next-themes

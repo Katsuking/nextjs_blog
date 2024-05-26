@@ -76,6 +76,7 @@ const config = {
         fifth: 'moveInCircle 20s ease infinite',
         scroll:
           'scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite',
+        aurora: 'aurora 60s linear infinite',
       },
       keyframes: {
         'accordion-down': {
@@ -94,6 +95,14 @@ const config = {
           '100%': {
             opacity: '1',
             transform: 'translate(-50%,-40%) scale(1)',
+          },
+        },
+        aurora: {
+          from: {
+            backgroundPosition: '50% 50%, 50% 50%',
+          },
+          to: {
+            backgroundPosition: '350% 50%, 350% 50%',
           },
         },
       },

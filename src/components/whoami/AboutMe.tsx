@@ -25,7 +25,7 @@ const AboutMe = () => {
         <div className="hidden sm:flex flex-col justify-start items-start w-1/2 mt-10 ml-10 h-full">
           <h1 className="text-[50px] font-bold">$ whoami</h1>
           <p className="flex-grow text-[14px] md:text-[20px] mx-5 my-6 h-full space-y-3">
-            <span>趣味: 筋トレ, 海外旅行(円高のとき), 車輪の大開発</span>
+            <span>趣味: 筋トレ, 海外旅行(円高のとき), IT技術</span>
             <br />
             <span>最近は blazingly fast! な実行速度と安全性に魅了され、</span>
             <br />
