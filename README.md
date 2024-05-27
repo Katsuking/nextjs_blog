@@ -18,7 +18,11 @@ npm i gray-matter remark remark-rehype rehype-stringify
 npm i rehype-pretty-code shiki
 ```
 
-### aceterny ui
+### UI
+
+ベース tailwind aceterny ui
+
+#### aceterny ui
 
 ちょっとモダンに仕上げたい
 
@@ -26,15 +30,15 @@ npm i rehype-pretty-code shiki
 
 ```sh
 npm i framer-motion clsx tailwind-merge mini-svg-data-uri
-npm i tailwindcss-animate framer-motion
+npm i tailwindcss-animate framer-motion react-lottie
 ```
 
-操作可能な地球を加える
+#### react-lottie
 
-[GitHub Globe](https://ui.aceternity.com/components/github-globe)
+簡単なアニメーションのアイコンが使える
 
 ```sh
-npm i three three-globe @react-three/fiber @react-three/drei
+npm i react-lottie
 ```
 
 ### next-themes
